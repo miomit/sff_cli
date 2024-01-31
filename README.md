@@ -16,6 +16,13 @@
 
 Command-line application that implements the functionality of the [sff library](https://github.com/yuraMovsesyan/sff_lib).
 
+## Installation
+### Install from pub:
+`dart pub global activate sff`
+
+### Install from clone:
+`dart pub global activate -s path .`
+
 ## Usage
 ```bash
 sff <command> [arguments]
