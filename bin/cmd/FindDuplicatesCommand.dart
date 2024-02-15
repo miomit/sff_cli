@@ -8,7 +8,7 @@ import 'package:sff_lib/sff_lib.dart';
 class FindDuplicatesCommand extends Command<String> {
   final  _fileFormats = {
     'all':    (_) => true,
-    'img':    (path) => ['.jpeg', '.png', '.webp', '.gif', '.raw', '.tiff', '.psd'].contains(extension(path)),
+    'img':    (path) => ['.jpeg', '.jpg', '.png', '.webp', '.gif', '.raw', '.tiff', '.psd'].contains(extension(path)),
     'vector': (path) => ['.svg', '.esp', '.pdf', '.ai', '.cdr'].contains(extension(path)),
     'video':  (path) => ['.avi', '.mkv', '.mp4', '.mpeg', '.ogv', '.webm'].contains(extension(path)),
     'audio':  (path) => ['.m4a', '.mp3', '.wav', '.ogg', '.mpa', '.flac'].contains(extension(path)),
@@ -44,12 +44,12 @@ class FindDuplicatesCommand extends Command<String> {
           if (argResults!.wasParsed("cfe")) {
             compareFilesEquality(event.$1, event.$2).then((isEq) {
               if (isEq){
-                print("----------\n${event.$1.path}\n${event.$1.path}");
+                print("----------\n${event.$1.path}\n${event.$2.path}");
               }
             });
           }
           else {
-            print("----------\n${event.$1.path}\n${event.$1.path}");
+            print("----------\n${event.$1.path}\n${event.$2.path}");
           }
         });
         return "ok";
