@@ -35,7 +35,12 @@ class FindDuplicatesCommand extends Command<String> {
     if (argResults?["dir"] case String path) {
       final dir = Directory(path);
       if (dir.existsSync()) {
-        findDuplicates(dir, _fileFormats[argResults?["format"]]).listen((event) { 
+        findDuplicates(
+          [
+            dir
+          ], 
+          filter: _fileFormats[argResults?["format"]],
+        ).listen((event) { 
           if (argResults!.wasParsed("cfe")) {
             compareFilesEquality(event.$1, event.$2).then((isEq) {
               if (isEq){
