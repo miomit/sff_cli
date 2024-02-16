@@ -28,8 +28,8 @@ class CompareFilesEqualityCommand extends Command<String> {
 
         if (file1.existsSync()) {
           if (file2.existsSync()) {
-            compareFilesEquality(file1, file2)
-              .then((value) => print(value ? "Files are equal" : "Files are not equal"));
+            compareFilesEquality(file1, file2).then((value) =>
+                print(value ? "Files are equal" : "Files are not equal"));
             return "ok";
           } else {
             throw "File2 does not exist";

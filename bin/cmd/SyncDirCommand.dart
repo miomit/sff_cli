@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:args/command_runner.dart';
 import 'package:sff_lib/sff_lib.dart';
 
+import '../helper/file_print.dart';
+
 class SyncDirCommand extends Command<String> {
   SyncDirCommand() {
     argParser.addOption('dir1', help: 'Path to directory 1');
@@ -28,8 +30,8 @@ class SyncDirCommand extends Command<String> {
 
         if (dir1.existsSync()) {
           if (dir2.existsSync()) {
-            syncDir(dir1, dir2).listen((event) { 
-              print("----------\n${event.$1.path}\n${event.$1.path}");
+            syncDir(dir1, dir2).listen((event) {
+              printDuoFilePath(event);
             });
             return "ok";
           } else {
