@@ -50,6 +50,20 @@ sff fd --dir path/to/dir2
 sff cfe --fiel1 path/to/file1 --fiel2 path/to/file2
 ```
 
+## Contributing
+
+```bash
+git clone https://github.com/yuraMovsesyan/sff_cli.git
+
+cd ./sff_cli
+
+git submodule init
+git submodule update
+
+dart pub get
+dart run ./bin/sff_cli.dart
+```
+
 ## Additional information
 
 This utility is under development. With each new version, a new feature will be added.
