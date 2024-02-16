@@ -14,7 +14,7 @@ void main(List<String> args) async {
         ..addCommand(CopyDirCommand());
 
   try {
-    if (await runner.run(args) == null) {
+    if (await runner.run(args) == "") {
       print(runner.usage);
     }
   } catch (e) {

@@ -42,6 +42,6 @@ class SyncDirCommand extends Command<String> {
         }
       }
     }
-    return null;
+    return "";
   }
 }

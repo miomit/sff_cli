@@ -70,6 +70,6 @@ class FindDuplicatesCommand extends Command<String> {
         throw "This directory does not exist";
       }
     }
-    return null;
+    return "";
   }
 }

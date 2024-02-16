@@ -39,6 +39,6 @@ class CompareFilesEqualityCommand extends Command<String> {
         }
       }
     }
-    return null;
+    return "";
   }
 }

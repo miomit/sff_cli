@@ -38,6 +38,6 @@ class CopyDirCommand extends Command<String> {
         }
       }
     }
-    return null;
+    return "";
   }
 }
