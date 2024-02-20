@@ -215,7 +215,7 @@ packages:
       path: sff_lib
       relative: true
     source: path
-    version: "0.0.5"
+    version: "0.0.6"
   shelf:
     dependency: transitive
     description:
