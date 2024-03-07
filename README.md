@@ -69,7 +69,7 @@ dart run ./bin/sff_cli.dart
 ```bash
 sudo chmod +x ./deb_build.sh
 
-./deb_build.sh
+sudo ./deb_build.sh
 ```
 
 ### Install
