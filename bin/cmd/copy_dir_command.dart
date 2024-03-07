@@ -10,6 +10,7 @@ class CopyDirCommand extends Command<String> {
   CopyDirCommand() {
     argParser.addOption('dirin', help: 'Path to directory in');
     argParser.addOption('dirout', help: 'Path to directory out');
+    argParser.addFlag('cod', help: 'Copy only directories');
   }
 
   @override
@@ -29,7 +30,7 @@ class CopyDirCommand extends Command<String> {
         final dirOut = Directory(pathOut);
 
         if (dirIn.existsSync()) {
-          copyDirRec(dirIn, dirOut).listen((event) {
+          copyDirRec(dirIn, dirOut, !argResults!.wasParsed("cod")).listen((event) {
             printDuoFilePath(event);
           });
           return "ok";
