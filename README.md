@@ -64,6 +64,24 @@ dart pub get
 dart run ./bin/sff_cli.dart
 ```
 
+## deb package 
+### Build
+```bash
+sudo chmod +x ./deb_build.sh
+
+./deb_build.sh
+```
+
+### Install
+```bash
+sudo apt install ./build/sff.deb
+```
+
+### Remove
+```bash
+sudo apt remove sff
+```
+
 ## Additional information
 
 This utility is under development. With each new version, a new feature will be added.
