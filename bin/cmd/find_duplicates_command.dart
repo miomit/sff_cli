@@ -38,7 +38,7 @@ class FindDuplicatesCommand extends Command<String> {
   }
 
   @override
-  String get name => 'findDuplicates';
+  String get name => 'FindDuplicates';
 
   @override
   String get description => 'Find duplicates';
