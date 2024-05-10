@@ -20,14 +20,26 @@ jobs:
       run: dart pub get
 
     - name: Build application
-      run: dart compile exe bin/sff_cli.dart -o sff_cli
+      run: dart compile exe bin/sff_cli.dart -o sff
 
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ github.event.repository.releases[0].upload_url }}
-        asset_path: ./sff_cli
-        asset_name: sff_cli
-        asset_content_type: application/octet-stream
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./sff
+        asset_name: sff
+        asset_content_type: application/sff
