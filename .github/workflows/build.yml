@@ -1,6 +1,9 @@
 name: Publish utility on release
 
 on:
+  push:
+    branches:
+      - main
   release:
     types: [published]
 
