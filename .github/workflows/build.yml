@@ -1,30 +1,34 @@
-name: Build and Release Binary
+name: Publish utility on release
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
+
+permissions:
+  contents: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        name: Build binaries
+        runs-on: ubuntu-latest
+        steps:
 
-    steps:
-    - uses: actions/checkout@v4
-    - uses: dart-lang/setup-dart@v1
+          - uses: actions/checkout@v4
+          - uses: dart-lang/setup-dart@v1
 
-    - name: Git submodule
-      run: git submodule init && git submodule update
+          - name: Git submodule
+            run: git submodule init && git submodule update
 
-    - name: Install dependencies
-      run: dart pub get
+          - name: Install dependencies
+            run: dart pub get
 
-    - name: Build application
-      run: dart compile exe bin/sff_cli.dart -o sff
+          - name: '📄 Checkout'
+            uses: actions/checkout@v3
 
-    - name: Upload Release Asset
-      run: gh release upload v1 sff
-
-      env:
-        GITHUB_TOKEN: ${{ github.TOKEN }}
-      shell: bash
+          - name: '📦 Package windows x64'
+            run: |
+                dart compile exe bin/sff_cli.dart -o sff
+                gh release upload ${{github.event.release.tag_name}} sff
+            env:
+              GITHUB_TOKEN: ${{ github.TOKEN }}
+            shell: bash
