@@ -22,24 +22,9 @@ jobs:
     - name: Build application
       run: dart compile exe bin/sff_cli.dart -o sff
 
-
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
     - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
+      run: gh release upload ${{github.event.release.tag_name}} sff
+
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./sff
-        asset_name: sff
-        asset_content_type: application/sff
+        GITHUB_TOKEN: ${{ github.TOKEN }}
+      shell: bash
