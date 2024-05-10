@@ -42,7 +42,7 @@ jobs:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             with:
               upload_url: ${{ steps.create_release.outputs.upload_url }}
-              asset_path: deb/usr/bin/
+              asset_path: ./deb/usr/bin/sff
               asset_name: sff
               asset_content_type: update)
 
