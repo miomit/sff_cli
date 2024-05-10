@@ -23,7 +23,7 @@ jobs:
       run: dart compile exe bin/sff_cli.dart -o sff
 
     - name: Upload Release Asset
-      run: gh release upload ${{github.event.release.tag_name}} sff
+      run: gh release upload v1 sff
 
       env:
         GITHUB_TOKEN: ${{ github.TOKEN }}
