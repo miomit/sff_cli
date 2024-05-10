@@ -7,15 +7,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: dart:latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Setup Dart
-      uses: subosito/dart@v1
-
     - name: Install dependencies
       run: dart pub get
 
