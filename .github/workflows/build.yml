@@ -30,6 +30,18 @@ jobs:
                 dart compile exe bin/sff_cli.dart -o sff
                 ./sff
             
+
+          - name: Create Draft Release
+            id: create_release
+            uses: actions/create-release@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              tag_name: <tofill>
+              release_name: <tofill>
+              draft: true
+              prerelease: false
+
           - uses: actions/upload-release-asset@v1.0.1
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -38,3 +50,9 @@ jobs:
               asset_path: ./sff
               asset_name: sff
               asset_content_type: update)
+
+          - uses: eregon/publish-release@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              release_id: ${{ steps.create_release.outputs.id }}
