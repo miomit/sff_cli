@@ -30,7 +30,7 @@ class CopyDirCommand extends Command<String> {
         final dirOut = Directory(pathOut);
 
         if (dirIn.existsSync()) {
-          copyDirRec(dirIn, dirOut, !argResults!.wasParsed("cod")).listen((event) {
+          copyDirRec(dirIn, dirOut, isCopyFile: !argResults!.wasParsed("cod")).listen((event) {
             printDuoFilePath(event);
           });
           return "ok";
