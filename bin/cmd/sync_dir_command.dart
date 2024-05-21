@@ -1,15 +1,41 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:path/path.dart' show extension;
 import 'package:args/command_runner.dart';
 import 'package:sff_lib/sff_lib.dart';
 
 import '../helper/file_print.dart';
 
 class SyncDirCommand extends Command<String> {
+
+  final _fileFormats = {
+    'all': (_) => true,
+    'img': (path) => [
+          '.jpeg',
+          '.jpg',
+          '.png',
+          '.webp',
+          '.gif',
+          '.raw',
+          '.tiff',
+          '.psd'
+        ].contains(extension(path)),
+    'vector': (path) =>
+        ['.svg', '.esp', '.pdf', '.ai', '.cdr'].contains(extension(path)),
+    'video': (path) => ['.avi', '.mkv', '.mp4', '.mpeg', '.ogv', '.webm']
+        .contains(extension(path)),
+    'audio': (path) => ['.m4a', '.mp3', '.wav', '.ogg', '.mpa', '.flac']
+        .contains(extension(path)),
+    'doc': (path) => ['.pdf', '.djvy', '.doc', '.docx', '.txt', '.md']
+        .contains(extension(path)),
+  };
+
   SyncDirCommand() {
     argParser.addOption('dir1', help: 'Path to directory 1');
     argParser.addOption('dir2', help: 'Path to directory 2');
+    argParser.addOption('format',
+        allowed: [..._fileFormats.keys], defaultsTo: "all");
   }
 
   @override
@@ -30,7 +56,7 @@ class SyncDirCommand extends Command<String> {
 
         if (dir1.existsSync()) {
           if (dir2.existsSync()) {
-            syncDir(dir1, dir2).listen((event) {
+            syncDir(dir1, dir2, filter: _fileFormats[argResults?["format"]]).listen((event) {
               printDuoFilePath(event);
             });
             return "ok";
