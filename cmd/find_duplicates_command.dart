@@ -5,8 +5,6 @@ import 'package:path/path.dart' show extension;
 import 'package:args/command_runner.dart';
 import 'package:sff_lib/sff_lib.dart';
 
-import '../helper/file_print.dart';
-
 class FindDuplicatesCommand extends Command<String> {
   final _fileFormats = {
     'all': (_) => true,
@@ -54,15 +52,15 @@ class FindDuplicatesCommand extends Command<String> {
         findDuplicates(
           [dir],
           filter: _fileFormats[argResults?["format"]],
-        ).listen((event) {
+        ).listen((fl) {
           if (argResults!.wasParsed("cfe")) {
-            compareFilesEquality(event.$1, event.$2).then((isEq) {
+            compareFilesEquality(fl.file1, fl.file2!).then((isEq) {
               if (isEq) {
-                printDuoFilePath(event);
+                print(fl);
               }
             });
           } else {
-            printDuoFilePath(event);
+            print(fl);
           }
         });
         return "ok";

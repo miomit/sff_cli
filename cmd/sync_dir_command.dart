@@ -5,10 +5,7 @@ import 'package:path/path.dart' show extension;
 import 'package:args/command_runner.dart';
 import 'package:sff_lib/sff_lib.dart';
 
-import '../helper/file_print.dart';
-
 class SyncDirCommand extends Command<String> {
-
   final _fileFormats = {
     'all': (_) => true,
     'img': (path) => [
@@ -56,8 +53,9 @@ class SyncDirCommand extends Command<String> {
 
         if (dir1.existsSync()) {
           if (dir2.existsSync()) {
-            syncDir(dir1, dir2, filter: _fileFormats[argResults?["format"]]).listen((event) {
-              printDuoFilePath(event);
+            syncDir(dir1, dir2, filter: _fileFormats[argResults?["format"]])
+                .listen((fl) {
+              print(fl);
             });
             return "ok";
           } else {

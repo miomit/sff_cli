@@ -5,10 +5,7 @@ import 'package:args/command_runner.dart';
 import 'package:path/path.dart';
 import 'package:sff_lib/sff_lib.dart';
 
-import '../helper/file_print.dart';
-
 class CopyDirCommand extends Command<String> {
-
   final _fileFormats = {
     'all': (_) => true,
     'img': (path) => [
@@ -30,7 +27,7 @@ class CopyDirCommand extends Command<String> {
     'doc': (path) => ['.pdf', '.djvy', '.doc', '.docx', '.txt', '.md']
         .contains(extension(path)),
   };
-  
+
   CopyDirCommand() {
     argParser.addOption('dirin', help: 'Path to directory in');
     argParser.addOption('dirout', help: 'Path to directory out');
@@ -56,13 +53,11 @@ class CopyDirCommand extends Command<String> {
         final dirOut = Directory(pathOut);
 
         if (dirIn.existsSync()) {
-          copyDirRec(
-            dirIn,
-            dirOut, 
-            isCopyFile: !argResults!.wasParsed("cod"),
-            filter: _fileFormats[argResults?["format"]]
-          ).listen((event) {
-            printDuoFilePath(event);
+          copyDirRec(dirIn, dirOut,
+                  isCopyFile: !argResults!.wasParsed("cod"),
+                  filter: _fileFormats[argResults?["format"]])
+              .listen((fl) {
+            print(fl);
           });
           return "ok";
         } else {

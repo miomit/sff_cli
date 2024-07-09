@@ -5,8 +5,6 @@ import 'package:args/command_runner.dart';
 import 'package:sff_lib/sff_lib.dart';
 import 'package:crypto/crypto.dart';
 
-import '../helper/file_print.dart';
-
 class ChecksumCommand extends Command<String> {
   final _hashMethods = {
     "md5": md5,
@@ -23,8 +21,8 @@ class ChecksumCommand extends Command<String> {
     argParser.addOption('file', help: 'Path to file');
     argParser.addOption(
       'hm',
-      allowed: [..._hashMethods.keys], 
-      defaultsTo: "sha1", 
+      allowed: [..._hashMethods.keys],
+      defaultsTo: "sha1",
       help: "Hash Method",
     );
   }
@@ -39,18 +37,17 @@ class ChecksumCommand extends Command<String> {
   List<String> get aliases => ['cs'];
 
   @override
-  FutureOr<String>? run() async{
+  FutureOr<String>? run() async {
     if (argResults?["file"] case String path) {
-        final file = File(path);
-        
-        if (file.existsSync()) {
-          final hashMethod = _hashMethods[argResults?["hm"]] ?? sha1;
-          print(await generateHashFile(file, hashMethod));
-          return "ok";
-        } else {
-          throw "File does not exist";
-        }
-      
+      final file = File(path);
+
+      if (file.existsSync()) {
+        final hashMethod = _hashMethods[argResults?["hm"]] ?? sha1;
+        print(await generateHashFile(file, hashMethod));
+        return "ok";
+      } else {
+        throw "File does not exist";
+      }
     }
     return "";
   }
