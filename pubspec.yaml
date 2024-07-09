@@ -9,6 +9,7 @@ environment:
 dependencies:
   args: ^2.4.2
   path: ^1.9.0
+  crypto:
   sff_lib: 
     path: sff_lib/
 
