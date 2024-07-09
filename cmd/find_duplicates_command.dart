@@ -86,11 +86,16 @@ class FindDuplicatesCommand extends Command<String> {
           filter: _fileFormats[argResults?["format"]],
         ).listen((fl) {
           if (argResults!.wasParsed("cfe")) {
-            compareFilesEquality(fl.file1, fl.file2!).then((isEq) {
-              if (isEq) {
-                print(fl);
-              }
-            });
+            compareFilesEquality(
+              fl.file1,
+              fl.file2!,
+            ).then(
+              (isEq) {
+                if (isEq) {
+                  print(fl);
+                }
+              },
+            );
           } else {
             print(fl);
           }

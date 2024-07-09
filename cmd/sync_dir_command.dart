@@ -85,10 +85,15 @@ class SyncDirCommand extends Command<String> {
 
         if (dir1.existsSync()) {
           if (dir2.existsSync()) {
-            syncDir(dir1, dir2, filter: _fileFormats[argResults?["format"]])
-                .listen((fl) {
-              print(fl);
-            });
+            syncDir(
+              dir1,
+              dir2,
+              filter: _fileFormats[argResults?["format"]],
+            ).listen(
+              (fl) {
+                print(fl);
+              },
+            );
             return "ok";
           } else {
             throw "Dir2 does not exist";

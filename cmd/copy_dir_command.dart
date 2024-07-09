@@ -88,10 +88,12 @@ class CopyDirCommand extends Command<String> {
         final dirOut = Directory(pathOut);
 
         if (dirIn.existsSync()) {
-          copyDirRec(dirIn, dirOut,
-                  isCopyFile: !argResults!.wasParsed("cod"),
-                  filter: _fileFormats[argResults?["format"]])
-              .listen((fl) {
+          copyDirRec(
+            dirIn,
+            dirOut,
+            isCopyFile: !argResults!.wasParsed("cod"),
+            filter: _fileFormats[argResults?["format"]],
+          ).listen((fl) {
             print(fl);
           });
           return "ok";

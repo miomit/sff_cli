@@ -46,7 +46,12 @@ class ChecksumCommand extends Command<String> {
 
       if (file.existsSync()) {
         final hashMethod = _hashMethods[argResults?["hm"]] ?? sha1;
-        print(await generateHashFile(file, hashMethod));
+        print(
+          await generateHashFile(
+            file,
+            hashMethod,
+          ),
+        );
         return "ok";
       } else {
         throw "File does not exist";
