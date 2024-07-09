@@ -6,8 +6,14 @@ import 'package:sff_lib/sff_lib.dart';
 
 class CompareFilesEqualityCommand extends Command<String> {
   CompareFilesEqualityCommand() {
-    argParser.addOption('file1', help: 'Path to file 1');
-    argParser.addOption('file2', help: 'Path to file 2');
+    argParser.addOption(
+      'file1',
+      help: 'Path to file 1',
+    );
+    argParser.addOption(
+      'file2',
+      help: 'Path to file 2',
+    );
   }
 
   @override

@@ -16,23 +16,55 @@ class FindDuplicatesCommand extends Command<String> {
           '.gif',
           '.raw',
           '.tiff',
-          '.psd'
+          '.psd',
         ].contains(extension(path)),
-    'vector': (path) =>
-        ['.svg', '.esp', '.pdf', '.ai', '.cdr'].contains(extension(path)),
-    'video': (path) => ['.avi', '.mkv', '.mp4', '.mpeg', '.ogv', '.webm']
-        .contains(extension(path)),
-    'audio': (path) => ['.m4a', '.mp3', '.wav', '.ogg', '.mpa', '.flac']
-        .contains(extension(path)),
-    'doc': (path) => ['.pdf', '.djvy', '.doc', '.docx', '.txt', '.md']
-        .contains(extension(path)),
+    'vector': (path) => [
+          '.svg',
+          '.esp',
+          '.pdf',
+          '.ai',
+          '.cdr',
+        ].contains(extension(path)),
+    'video': (path) => [
+          '.avi',
+          '.mkv',
+          '.mp4',
+          '.mpeg',
+          '.ogv',
+          '.webm',
+        ].contains(extension(path)),
+    'audio': (path) => [
+          '.m4a',
+          '.mp3',
+          '.wav',
+          '.ogg',
+          '.mpa',
+          '.flac',
+        ].contains(extension(path)),
+    'doc': (path) => [
+          '.pdf',
+          '.djvy',
+          '.doc',
+          '.docx',
+          '.txt',
+          '.md',
+        ].contains(extension(path)),
   };
 
   FindDuplicatesCommand() {
-    argParser.addFlag('cfe', help: 'additional check of the file contents');
-    argParser.addOption('format',
-        allowed: [..._fileFormats.keys], defaultsTo: "all");
-    argParser.addOption('dir', help: 'Directory where to start the find');
+    argParser.addFlag(
+      'cfe',
+      help: 'additional check of the file contents',
+    );
+    argParser.addOption(
+      'format',
+      allowed: [..._fileFormats.keys],
+      defaultsTo: "all",
+    );
+    argParser.addOption(
+      'dir',
+      help: 'Directory where to start the find',
+    );
   }
 
   @override

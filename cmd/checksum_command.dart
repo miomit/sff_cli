@@ -18,7 +18,10 @@ class ChecksumCommand extends Command<String> {
   };
 
   ChecksumCommand() {
-    argParser.addOption('file', help: 'Path to file');
+    argParser.addOption(
+      'file',
+      help: 'Path to file',
+    );
     argParser.addOption(
       'hm',
       allowed: [..._hashMethods.keys],

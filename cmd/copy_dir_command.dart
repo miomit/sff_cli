@@ -16,24 +16,59 @@ class CopyDirCommand extends Command<String> {
           '.gif',
           '.raw',
           '.tiff',
-          '.psd'
+          '.psd',
         ].contains(extension(path)),
-    'vector': (path) =>
-        ['.svg', '.esp', '.pdf', '.ai', '.cdr'].contains(extension(path)),
-    'video': (path) => ['.avi', '.mkv', '.mp4', '.mpeg', '.ogv', '.webm']
-        .contains(extension(path)),
-    'audio': (path) => ['.m4a', '.mp3', '.wav', '.ogg', '.mpa', '.flac']
-        .contains(extension(path)),
-    'doc': (path) => ['.pdf', '.djvy', '.doc', '.docx', '.txt', '.md']
-        .contains(extension(path)),
+    'vector': (path) => [
+          '.svg',
+          '.esp',
+          '.pdf',
+          '.ai',
+          '.cdr',
+        ].contains(extension(path)),
+    'video': (path) => [
+          '.avi',
+          '.mkv',
+          '.mp4',
+          '.mpeg',
+          '.ogv',
+          '.webm',
+        ].contains(extension(path)),
+    'audio': (path) => [
+          '.m4a',
+          '.mp3',
+          '.wav',
+          '.ogg',
+          '.mpa',
+          '.flac',
+        ].contains(extension(path)),
+    'doc': (path) => [
+          '.pdf',
+          '.djvy',
+          '.doc',
+          '.docx',
+          '.txt',
+          '.md',
+        ].contains(extension(path)),
   };
 
   CopyDirCommand() {
-    argParser.addOption('dirin', help: 'Path to directory in');
-    argParser.addOption('dirout', help: 'Path to directory out');
-    argParser.addFlag('cod', help: 'Copy only directories');
-    argParser.addOption('format',
-        allowed: [..._fileFormats.keys], defaultsTo: "all");
+    argParser.addOption(
+      'dirin',
+      help: 'Path to directory in',
+    );
+    argParser.addOption(
+      'dirout',
+      help: 'Path to directory out',
+    );
+    argParser.addFlag(
+      'cod',
+      help: 'Copy only directories',
+    );
+    argParser.addOption(
+      'format',
+      allowed: [..._fileFormats.keys],
+      defaultsTo: "all",
+    );
   }
 
   @override
