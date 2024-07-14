@@ -2,3 +2,5 @@
 
 build/
 deb/usr/bin/
+
+*.snap

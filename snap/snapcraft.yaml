@@ -1,0 +1,34 @@
+name: sff
+version: 0.0.3
+summary: Command-line application
+description: |
+  Command-line application that implements the functionality of the sff library. 
+
+confinement: strict
+base: core24
+grade: stable
+
+parts:
+  sff:
+    plugin: dump
+    source: org.snap.sff.tar.gz
+
+plugs:
+  mnt:
+    interface: system-files
+    read:
+    - /mnt
+    write:
+    - /mnt
+
+apps:
+  sff:
+    command: sff
+    plugs:
+    - removable-media
+    - home
+    - cifs-mount
+    - mount-control
+    - mount-observe
+    - raw-volume
+    - mnt

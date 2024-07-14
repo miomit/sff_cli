@@ -20,7 +20,7 @@ package: build
 	@dpkg -b .temp build/sff.deb
 	@sudo rm -r .temp
 	@echo "Done!"
-    
+
 install:
 	@install -d $(DESTDIR)/usr/share/sff/
 	@install -d $(DESTDIR)/usr/bin
