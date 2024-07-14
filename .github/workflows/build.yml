@@ -21,9 +21,7 @@ jobs:
 
           - name: '📦 Package linux x64'
             run: |
-                dart pub get
-                ./deb_build.sh
-                mv ./deb/usr/bin/sff ./build/
+                make package
           
           - name: Release
             id: create_release

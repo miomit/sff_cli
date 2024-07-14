@@ -1,8 +1,0 @@
-Package: sff
-Version: 1.0
-Section: unknown
-Priority: optional
-Depends: libc6
-Architecture: amd64
-Essential: no
-Maintainer: sff <movsesyan-03@inbox.ru>

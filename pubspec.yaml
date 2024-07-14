@@ -1,6 +1,6 @@
 name: sff
 description: Command-line application that implements the functionality of the sff_lib library.
-version: 0.0.2
+version: 0.0.3
 repository: https://github.com/yuraMovsesyan/sff_cli
 
 environment:
