@@ -1,4 +1,0 @@
-[submodule "sff_lib"]
-	path = sff_lib
-	url = https://github.com/miomit/sff_lib
-	branch = main

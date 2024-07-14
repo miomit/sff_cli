@@ -10,8 +10,7 @@ dependencies:
   args: ^2.4.2
   path: ^1.9.0
   crypto: ^3.0.3
-  sff_lib: 
-    path: sff_lib/
+  sff_lib: ^0.0.8
 
 dev_dependencies:
   lints: ^2.1.0

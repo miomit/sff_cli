@@ -57,9 +57,6 @@ git clone https://github.com/yuraMovsesyan/sff_cli.git
 
 cd ./sff_cli
 
-git submodule init
-git submodule update
-
 dart pub get
 dart run ./bin/sff_cli.dart
 ```

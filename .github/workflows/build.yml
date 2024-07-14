@@ -21,8 +21,6 @@ jobs:
 
           - name: '📦 Package linux x64'
             run: |
-                git submodule init
-                git submodule update
                 dart pub get
                 ./deb_build.sh
                 mv ./deb/usr/bin/sff ./build/
