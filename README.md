@@ -16,6 +16,8 @@
 
 Command-line application that implements the functionality of the [sff library](https://github.com/yuraMovsesyan/sff_lib).
 
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/miomit-sff-cli0)
+
 ## Installation
 ### Install from pub:
 `dart pub global activate sff`
