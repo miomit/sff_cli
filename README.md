@@ -1,3 +1,5 @@
+[![pub package](https://img.shields.io/pub/v/sff.svg)](https://pub.dev/packages/sff)
+[![miomit-sff-cli0](https://snapcraft.io/miomit-sff-cli0/badge.svg)](https://snapcraft.io/miomit-sff-cli0)
 ```                                 
   .--.--.       ,---,.    ,---,. 
  /  /    '.   ,'  .' |  ,'  .' | 
